@@ -26,7 +26,7 @@ const eventRouter = express.Router()
 
 // get events with pagination
 
-// get profiles with pagination, filter
+// get events with pagination, filter
 eventRouter.get("/", async(req,res,next)=>{
     try{
         const query = q2m(req.query);

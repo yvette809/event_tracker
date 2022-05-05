@@ -1,28 +1,21 @@
-import {useState} from 'react'
-import axios from 'axios'
-import { useEffect } from 'react'
-import Events from './pages/Events'
+
+import { Routes, Route, BrowserRouter  } from 'react-router-dom'
+import Home from './pages/Home'
+import EventDetails  from './pages/EventDetails'
+import Navigation from './components/Navigation'
 
 function App() {
-  const[events, setEvents] = useState([])
-  const [loading, setLoading] = useState(false)
-  const url = "http://localhost:4010/events?sort=time"
-
-  const getEvents = async()=>{
-    setLoading(true)
-    const res = await axios.get(url)
-    setEvents(res.data)
-    
-  }
-
-  useEffect(()=>{
-     getEvents()
-  },[])
-
   return (
-    <div className="App">
-   <Events events={events} loading={loading}/>
-    </div>
+    <BrowserRouter>
+      <Navigation />
+      <div className="container">
+        <Routes >
+        <Route path='/' element={ <Home /> } />
+        <Route path='/events/:id' element={ <EventDetails /> } />
+        </Routes>
+      </div>
+    </BrowserRouter> 
+
   );
 }
 
