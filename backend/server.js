@@ -12,8 +12,10 @@ dotenv.config()
 server.use(cors())
 
 //init middleware
-server.use(express.json({ extended: false }))
-server.use(express.urlencoded({ extended: false }))
+// server.use(express.json({ extended: false }))
+// server.use(express.urlencoded({ extended: false }))
+server.use(express.json({ limit: "30mb", extended: true }))
+server.use(express.urlencoded({ limit: "30mb", extended: true }))
 
 // routes
 server.use("/users", userRouter)

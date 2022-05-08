@@ -3,9 +3,11 @@ import axios from 'axios'
 import Events from '../components/Events'
 
 
+
 const Home = () => {
     const [events, setEvents] = useState([])
     const [loading, setLoading] = useState(false)
+
     const url = "http://localhost:4010/events?sort=time"
     //const url = "http://localhost:4010/events"
   
@@ -20,7 +22,10 @@ const Home = () => {
       getEvents()
     }, [])
   return(
+    <>
       <Events events = {events} loading={loading}/>
+    
+      </>
   )
 }
 
