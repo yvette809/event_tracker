@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
-const AddEvent = ({setShowModal}) => {
+const AddEvent = ({ setShowModal }) => {
 
-    const addEvent = async()=>{
-
+    const addEvent = async () => {
+        console.log('event added')
     }
     return (
         <Modal.Dialog>
-            <Modal.Header closeButton>
+            <Modal.Header closeButton onClick={() => setShowModal(false)}>
                 <Modal.Title>Modal title</Modal.Title>
             </Modal.Header>
 
@@ -17,7 +17,7 @@ const AddEvent = ({setShowModal}) => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary" onClick={setShowModal(false)}>Close</Button>
+                <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
                 <Button variant="primary" onClick={addEvent}>Add Event</Button>
             </Modal.Footer>
         </Modal.Dialog>

@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import FileBase from 'react-file-base64';
+//import { useNavigate } from 'react-router-dom'
+// import FileBase from 'react-file-base64';
 
 import Message from '../components/Message'
 
 
 const Registration = () => {
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     name: "",
@@ -34,7 +34,8 @@ const Registration = () => {
       setToken(res.data.token)
       localStorage.setItem('token', res.data.token)
       // alert('user registered')
-      navigate("/")
+      //navigate("/")
+      console.log(token)
 
     } catch (error) {
       console.log(error)
@@ -74,7 +75,7 @@ const Registration = () => {
 
         <div className='mb-4'>
           {/* <input type="file" className="form-control" id="customFile" onDone={({ base64 }) => setFormData({ ...formData, selectedFile: base64 })}  /> */}
-          <FileBase type="file" multiple={false} onDone={({ base64 }) => setFormData({ ...formData, image: base64 })} />
+          {/* <FileBase type="file" multiple={false} onDone={({ base64 }) => setFormData({ ...formData, image: base64 })} /> */}
         </div>
 
         {/*  <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div> */}

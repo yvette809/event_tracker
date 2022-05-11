@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Moment from 'react-moment'
+// import Moment from 'react-moment'
 import axios from 'axios'
 
 const EventDetails = () => {
