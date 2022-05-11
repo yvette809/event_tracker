@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { NavDropdown, Container, Nav, Navbar } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import AddEvent from './AddEvent'
 
 const Navigation = () => {
 
   // const [show, SetShow] = useState(false)
   const[showModal, setShowModal] = useState(false)
+
 
   return (
     <>
@@ -31,11 +32,11 @@ const Navigation = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-     {showModal && <AddEvent setShowModal={setShowModal}/>} 
-    
+    {showModal && <AddEvent setShowModal={setShowModal}/>}
     </>
-    
+
   )
 }
 
 export default Navigation
+
