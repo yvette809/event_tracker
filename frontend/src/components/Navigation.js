@@ -1,52 +1,14 @@
-// import React, { useState } from 'react'
-// import { NavDropdown, Container, Nav, Navbar } from 'react-bootstrap'
-// import { Link} from 'react-router-dom'
-// import AddEvent from './AddEvent'
 
-// const Navigation = () => {
-
-//   // const [show, SetShow] = useState(false)
-//   const[showModal, setShowModal] = useState(false)
-
-
-//   return (
-//     <>
-//     <Navbar bg="light" expand="lg">
-//       <Container>
-//         <Navbar.Brand href="#home">Event Tracker</Navbar.Brand>
-//         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//         <Navbar.Collapse id="basic-navbar-nav">
-//           <Nav className="ml-auto">
-//             <Link to="/add-event" className='nav-link' onClick={setShowModal(true)}>Add new Event</Link>
-//             <Link to="/register" className='nav-link'>Register</Link>
-//             <Link to="/login" className='nav-link'>Login</Link>
-//             <NavDropdown title="Name" id="basic-nav-dropdown" >
-//               <img alt='' src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
-//               <NavDropdown.Item >Action</NavDropdown.Item>
-//               <NavDropdown.Item>Another action</NavDropdown.Item>
-//               <NavDropdown.Item >Something</NavDropdown.Item>
-//               <NavDropdown.Divider />
-//               <NavDropdown.Item><button>Logout</button></NavDropdown.Item>
-//             </NavDropdown>
-//           </Nav>
-//         </Navbar.Collapse>
-//       </Container>
-//     </Navbar>
-//     {showModal && <AddEvent setShowModal={setShowModal}/>}
-//     </>
-
-//   )
-// }
-
-// export default Navigation
-
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import AddEvent from './AddEvent'
+import { useSelector } from 'react-redux'
+
 
 const Navigation = ({ setShowModal }) => {
 
-  // const[showModal, setShowModal] = useState(false)
+  const { userInfo } = useSelector(state => state.userLogin)
+
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -83,7 +45,7 @@ const Navigation = ({ setShowModal }) => {
                   Register
                 </li>
               </Link>
-              <li className="nav-link" onClick={() => setShowModal(true)}>
+              <li className="nav-link add-event" onClick={() => setShowModal(true)}>
                 Add New Event
               </li>
             </ul>
@@ -92,32 +54,33 @@ const Navigation = ({ setShowModal }) => {
             <div className="dropdown">
               <a
                 className="dropdown-toggle d-flex align-items-center hidden-arrow"
-                href="#"
+                href="!#"
                 id="navbarDropdownMenuAvatar"
                 role="button"
                 data-mdb-toggle="dropdown"
                 aria-expanded="false"
               >
-                <img
+                {userInfo.image ? <img src={userInfo.image} /> : <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" />}
+                {/* <img
                   src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                   className="rounded-circle"
                   height="25"
                   alt="Black and White Portrait of a Man"
                   loading="lazy"
-                />
+                /> */}
               </a>
               <ul
                 className="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdownMenuAvatar"
               >
                 <li>
-                  <a className="dropdown-item" href="#">My profile</a>
+                  <Link className="dropdown-item" to="/">{userInfo.name}</Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">Settings</a>
+                  <Link className="dropdown-item" to="/">{userInfo.email}</Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">Logout</a>
+                  <Link className="dropdown-item" to="/">Logout</Link>
                 </li>
               </ul>
             </div>

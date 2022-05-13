@@ -26,8 +26,12 @@ img {
   border-radius: 0.5rem;
 }
 
-.error {
+/* .error {
   color: #9f3232;
   font-size: 0.9em;
   text-align: center;
+} */
+
+.add-event{
+  cursor: pointer;
 }
