@@ -1,12 +1,20 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { logOut } from '../actions/userActions'
 
 
 const Navigation = ({ setShowModal }) => {
 
   const { userInfo } = useSelector(state => state.userLogin)
+  const dispatch = useDispatch()
+
+  const logUserOut = () => {
+    dispatch(logOut)
+    console.log('token removed')
+
+  }
 
 
   return (
@@ -80,7 +88,7 @@ const Navigation = ({ setShowModal }) => {
                   <Link className="dropdown-item" to="/">{userInfo.email}</Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/">Logout</Link>
+                  <Link className="dropdown-item" to="/" onClick={logUserOut}>Logout</Link>
                 </li>
               </ul>
             </div>

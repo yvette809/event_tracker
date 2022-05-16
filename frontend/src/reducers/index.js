@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import { userLoginReducer } from "./userReducers";
-import { userRegisterReducer } from "./userReducers";
+import { userLoginReducer, userRegisterReducer } from "./userReducers";
+import { eventsReducer, eventDetailsReducer } from "./eventReducers";
 
 export default combineReducers({
-    userLogin:userLoginReducer,
-    userRegister:userRegisterReducer
+    userLogin: userLoginReducer,
+    userRegister: userRegisterReducer,
+    events: eventsReducer,
+    eventDetails: eventDetailsReducer
 })

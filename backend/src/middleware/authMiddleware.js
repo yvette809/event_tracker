@@ -1,6 +1,6 @@
 
 const jwt = require("jsonwebtoken");
-const UserModel = require("../routes/users/schema");
+const userModel = require("../routes/users/schema");
 
 const auth = async (req, res, next) => {
   if (
@@ -15,9 +15,9 @@ const auth = async (req, res, next) => {
         throw new Error("Not authorized, no token");
       }
       // decoded contains the user's id. We verify the token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, process.env.jwt_secret);
       // console.log(decoded)
-      req.user = await UserModel.findById(decoded.id).select("-password");
+      req.user = await userModel.findById(decoded.id).select("-password");
       next();
     } catch (error) {
       console.error(error);
@@ -30,4 +30,4 @@ const auth = async (req, res, next) => {
 
 
 
-module.exports= {auth}
+module.exports = { auth }

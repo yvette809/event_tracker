@@ -1,44 +1,44 @@
 
 import {
-    USER_LOGIN_REQUEST,
-    USER_LOGIN_SUCCESS,
-    USER_LOGIN_FAIL,
-    USER_LOGOUT,
-    USER_REGISTER_REQUEST,
-    USER_REGISTER_SUCCESS,
-    USER_REGISTER_FAIL
-} from '../constants/userConstants'
+    GET_EVENTS_REQUEST,
+    GET_EVENTS_SUCCESS,
+    GET_EVENTS_FAIL,
+    CREATE_EVENT,
+    GET_EVENTDETAILS_REQUEST,
+    GET_EVENTDETAILS_SUCCESS,
+    GET_EVENTDETAILS_FAIL
+} from '../constants/eventConstants'
 
 const initialState = {
-    userInfo: {},
+    events: [],
     loading: false,
     error: {}
 }
 
 
-export const userLoginReducer = (state = initialState, action) => {
+export const eventsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case USER_LOGIN_REQUEST:
+        case GET_EVENTS_REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case USER_LOGIN_SUCCESS:
+        case GET_EVENTS_SUCCESS:
             return {
                 ...state,
-                userInfo: action.payload
+                events: action.payload
             }
-        case USER_LOGIN_FAIL:
+        case GET_EVENTS_FAIL:
             return {
                 ...state,
                 error: action.payload
             }
-        case USER_LOGOUT:
+        case CREATE_EVENT:
             return {
                 ...state,
-                userInfo: {}
-
-            }
+                events: [action.payload, ...state.events],
+                loading: false
+            };
 
         default:
             return state
@@ -46,21 +46,21 @@ export const userLoginReducer = (state = initialState, action) => {
 }
 
 
-export const userRegisterReducer = (state = { user: {} }, action) => {
+export const eventDetailsReducer = (state = { event: {} }, action) => {
     switch (action.type) {
-        case USER_REGISTER_REQUEST:
+        case GET_EVENTDETAILS_REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case USER_REGISTER_SUCCESS:
+        case GET_EVENTDETAILS_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                user: action.payload
+                event: action.payload
             }
 
-        case USER_REGISTER_FAIL:
+        case GET_EVENTDETAILS_FAIL:
             return {
                 ...state,
                 loading: false,

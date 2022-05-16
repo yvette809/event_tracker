@@ -27,20 +27,20 @@ const eventRouter = express.Router()
 // get events with pagination
 
 // get events with pagination, filter
-eventRouter.get("/", async(req,res,next)=>{
-    try{
+eventRouter.get("/", async (req, res, next) => {
+    try {
         const query = q2m(req.query);
         const events = await eventModel
-        .find(query.criteria, query.options.fields)
-        .skip(query.options.skip)
-        .limit(query.options.limit)
-        .sort(query.options.sort)
+            .find(query.criteria, query.options.fields)
+            .skip(query.options.skip)
+            .limit(query.options.limit)
+            .sort(query.options.sort)
         res.send({
-            data:events,
-            total:events.length
+            data: events,
+            total: events.length
         })
 
-    }catch(error){
+    } catch (error) {
         next(error)
     }
 })
@@ -66,18 +66,25 @@ eventRouter.get("/:id", async (req, res) => {
 // user must be logged in
 
 eventRouter.post("/", auth, async (req, res) => {
-    const { title, description, date, time } = req.body
-    const event = new eventModel({
-        title,
-        description,
-        date,
-        time,
-        user: req.user._id
-    })
+    try {
+        const { title, description, date, time } = req.body
+        const event = new eventModel({
+            title,
+            description,
+            date,
+            time,
+            user: req.user._id
+        })
 
-    await event.save()
+        await event.save()
+        console.log(event)
 
-    res.status(201).send('event created')
+        res.status(201).send('event created')
+
+    } catch (error) {
+        console.log(error)
+    }
+
 
 })
 

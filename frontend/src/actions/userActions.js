@@ -43,6 +43,14 @@ export const login = (email, password) => async (dispatch) => {
 
 }
 
+// Logout user
+export const logOut = () => (dispatch) => {
+    localStorage.removeItem("userInfo")
+    dispatch({ type: USER_LOGOUT });
+
+};
+
+
 
 //register user
 
@@ -66,8 +74,8 @@ export const register = (formData) => async (dispatch) => {
 
         // we log in the user ones he is registered
         dispatch({
-            type:USER_LOGIN_SUCCESS,
-            payload:data
+            type: USER_LOGIN_SUCCESS,
+            payload: data
         })
 
         localStorage.setItem('user', JSON.stringify(data))
@@ -82,4 +90,5 @@ export const register = (formData) => async (dispatch) => {
 
 
 }
+
 
