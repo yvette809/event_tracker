@@ -59,6 +59,7 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(register(formData))
+    navigate("/login")
 
   }
 

@@ -73,10 +73,10 @@ export const register = (formData) => async (dispatch) => {
         })
 
         // we log in the user ones he is registered
-        dispatch({
-            type: USER_LOGIN_SUCCESS,
-            payload: data
-        })
+        // dispatch({
+        //     type: USER_LOGIN_SUCCESS,
+        //     payload: data
+        // })
 
         localStorage.setItem('user', JSON.stringify(data))
 

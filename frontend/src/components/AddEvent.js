@@ -3,11 +3,12 @@ import { Button, Modal } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addEvent } from '../actions/eventActions'
+import Message from './Message'
 
 const AddEvent = ({ setShowModal }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { userInfo } = useSelector(state => state.userLogin)
+    const { userInfo, error } = useSelector(state => state.userLogin)
 
     const [formData, setFormData] = useState({
         title: "",
@@ -19,16 +20,16 @@ const AddEvent = ({ setShowModal }) => {
 
     const { title, description, date, time } = formData
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if (userInfo) {
             dispatch(addEvent({ title, description, date, time }))
-           setShowModal(false)
+            setShowModal(false)
 
         } else {
             navigate('/login')
         }
-
 
 
     }
@@ -45,6 +46,7 @@ const AddEvent = ({ setShowModal }) => {
             </Modal.Header>
 
             <Modal.Body>
+                {error && <Message variant="primary">Fields Cannot be empty</Message>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="form-label" htmlFor="title">Title</label>
@@ -55,12 +57,12 @@ const AddEvent = ({ setShowModal }) => {
                     <div className="d-flex">
                         <div className="mb-4 me-3">
                             <label htmlFor="date">Date:</label>
-                            <input type="date" id="date" name="date" value={date} onChange={onChange} />
+                            <input type="datetime-local" id="date" name="date" value={date} onChange={onChange} />
                         </div>
-                        <div className='mb-4'>
+                        {/* <div className='mb-4'>
                             <label htmlFor="time">Time: </label>
                             <input type="time" id="time" name="time" value={time} onChange={onChange} />
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="mb-4">

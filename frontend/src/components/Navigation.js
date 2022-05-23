@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logOut } from '../actions/userActions'
 
@@ -9,10 +9,11 @@ const Navigation = ({ setShowModal }) => {
 
   const { userInfo } = useSelector(state => state.userLogin)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const logUserOut = () => {
-    dispatch(logOut)
-    console.log('token removed')
+    dispatch(logOut())
+    navigate("/login")
 
   }
 
@@ -43,16 +44,16 @@ const Navigation = ({ setShowModal }) => {
 
           <div className="d-flex align-items-center">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-              <Link to="/login">
+              {/* <Link to="/login">
                 <li className="nav-link">
                   Login
                 </li>
-              </Link>
-              <Link to="/register">
+              </Link> */}
+              {/* <Link to="/register">
                 <li className="nav-link">
                   Register
                 </li>
-              </Link>
+              </Link> */}
               <li className="nav-link add-event" onClick={() => setShowModal(true)}>
                 Add New Event
               </li>
@@ -77,20 +78,37 @@ const Navigation = ({ setShowModal }) => {
                   loading="lazy"
                 /> */}
               </a>
-              <ul
+
+              {userInfo ? (
+
+                <ul
+                  className="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="navbarDropdownMenuAvatar"
+                >
+                  <li>
+                    <Link className="dropdown-item" to="/">{userInfo.name}</Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/">{userInfo.email}</Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/" onClick={logUserOut}>Logout</Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul
                 className="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdownMenuAvatar"
               >
-                <li>
-                  <Link className="dropdown-item" to="/">{userInfo.name}</Link>
+                 <Link to="/login">
+                <li className="nav-link">
+                  Login
                 </li>
-                <li>
-                  <Link className="dropdown-item" to="/">{userInfo.email}</Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/" onClick={logUserOut}>Logout</Link>
-                </li>
+                </Link>
               </ul>
+
+              )}
+
             </div>
           </div>
 
@@ -104,4 +122,3 @@ const Navigation = ({ setShowModal }) => {
 }
 
 export default Navigation
-

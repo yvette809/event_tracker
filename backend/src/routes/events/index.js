@@ -67,12 +67,11 @@ eventRouter.get("/:id", async (req, res) => {
 
 eventRouter.post("/", auth, async (req, res) => {
     try {
-        const { title, description, date, time } = req.body
+        const { title, description, date} = req.body
         const event = new eventModel({
             title,
             description,
             date,
-            time,
             user: req.user._id
         })
 

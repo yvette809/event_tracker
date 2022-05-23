@@ -18,12 +18,9 @@ const eventSchema = mongoose.Schema({
         type: Date,
         default: new Date(),
         required: true
-    },
-    time: {
-        type: String,
-        required: true
-    },
-  
+    }
+   
+
 })
 
 

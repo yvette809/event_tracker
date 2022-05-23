@@ -1,8 +1,10 @@
 import React from 'react'
 import Loader from './Loader'
+import { useSelector, useDispatch } from 'react-redux'
 import SingleEvent from './SingleEvent'
 
 const Events = ({ events, loading }) => {
+    const dispatch = useDispatch()
     console.log('events =>', events)
 
     if (loading) {
