@@ -9,41 +9,41 @@ const eventRouter = express.Router()
 
 // get all events
 
-// eventRouter.get("/", async (req, res) => {
-//     try {
-//         const events = await eventModel.find()
-//         if (events) {
-//             res.status(200).send(events)
-//         }
+eventRouter.get("/", async (req, res) => {
+    try {
+        const events = await eventModel.find()
+        if (events) {
+            res.status(200).send(events)
+        }
 
-//         res.status(404).json({ msg: "events not found" })
+        res.status(404).json({ msg: "events not found" })
 
-//     } catch (error) {
-//         console.log(error)
+    } catch (error) {
+        console.log(error)
 
-//     }
-// })
+    }
+})
 
 // get events with pagination
 
 // get events with pagination, filter
-eventRouter.get("/", async (req, res, next) => {
-    try {
-        const query = q2m(req.query);
-        const events = await eventModel
-            .find(query.criteria, query.options.fields)
-            .skip(query.options.skip)
-            .limit(query.options.limit)
-            .sort(query.options.sort)
-        res.send({
-            data: events,
-            total: events.length
-        })
+// eventRouter.get("/", async (req, res, next) => {
+//     try {
+//         const query = q2m(req.query);
+//         const events = await eventModel
+//             .find(query.criteria, query.options.fields)
+//             .skip(query.options.skip)
+//             .limit(query.options.limit)
+//             .sort(query.options.sort)
+//         res.send({
+//             data: events,
+//             total: events.length
+//         })
 
-    } catch (error) {
-        next(error)
-    }
-})
+//     } catch (error) {
+//         next(error)
+//     }
+// })
 
 
 // get event by id

@@ -26,11 +26,13 @@ export const eventsReducer = (state = initialState, action) => {
         case GET_EVENTS_SUCCESS:
             return {
                 ...state,
+                loading:false,
                 events: action.payload
             }
         case GET_EVENTS_FAIL:
             return {
                 ...state,
+                loading:false,
                 error: action.payload
             }
         case CREATE_EVENT:

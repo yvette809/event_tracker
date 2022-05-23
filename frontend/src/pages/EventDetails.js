@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { getEventById } from '../actions/eventActions'
 import Moment from 'react-moment'
 import axios from 'axios'
 
 const EventDetails = () => {
 
-    const [event, setEvent] = useState({})
-    const eventId = useParams().id
+    const dispatch = useDispatch()
+    const {event} = useSelector(state=>state.eventDetails)
+    const {id} = useParams()
 
-    const getEventDetails = async (id) => {
-        const res = await axios.get(`http://localhost:4010/events/${id}`)
-        console.log("res", res.data)
-        setEvent(res.data)
-
-    }
 
     useEffect(() => {
-        getEventDetails(eventId)
-    }, [eventId])
+       dispatch(getEventById(id))
+    }, [dispatch, id])
 
-    console.log('eventdetails', event)
+  
 
     return (
 

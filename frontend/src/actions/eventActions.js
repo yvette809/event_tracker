@@ -18,7 +18,7 @@ export const getEvents = () => async (dispatch) => {
         })
 
 
-        const { data } = await axios.post('http://localhost:4010/events')
+        const { data } = await axios.get('http://localhost:4010/events')
 
         dispatch({
             type: GET_EVENTS_SUCCESS,
@@ -46,7 +46,7 @@ export const getEventById = (id) => async (dispatch) => {
         })
 
 
-        const { data } = await axios.post(`http://localhost:4010/events/${id}`)
+        const { data } = await axios.get(`http://localhost:4010/events/${id}`)
 
         dispatch({
             type: GET_EVENTDETAILS_SUCCESS,

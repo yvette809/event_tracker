@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
+import Events from './components/Events'
 import './index.css'
 import EventDetails from './pages/EventDetails'
 import Navigation from './components/Navigation'
@@ -18,7 +18,7 @@ function App() {
       <div className="container">
 
         <Routes >
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Events />} />
           <Route path='/events/:id' element={<EventDetails />} />
           <Route path='/register' element={<Registration />} />
           <Route path='/login' element={<Login />} />
