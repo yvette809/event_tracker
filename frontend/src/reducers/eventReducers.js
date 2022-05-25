@@ -36,6 +36,7 @@ export const eventsReducer = (state = initialState, action) => {
                 error: action.payload
             }
         case CREATE_EVENT:
+            
             return {
                 ...state,
                 events: [action.payload, ...state.events],

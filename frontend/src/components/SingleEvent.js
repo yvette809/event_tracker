@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
+//import moment from 'moment'
 
 const SingleEvent = ({ event }) => {
 
@@ -10,6 +11,7 @@ const SingleEvent = ({ event }) => {
             <div className='events'>
                 <p>{event.title}</p>
                 <p>  <Moment fromNow>{event.date}</Moment></p>
+                 
             </div>
         </Link>
 

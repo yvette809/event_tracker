@@ -24,9 +24,8 @@ eventRouter.get("/", async (req, res) => {
     }
 })
 
-// get events with pagination
 
-// get events with pagination, filter
+//get events with pagination, filter
 // eventRouter.get("/", async (req, res, next) => {
 //     try {
 //         const query = q2m(req.query);
@@ -67,7 +66,7 @@ eventRouter.get("/:id", async (req, res) => {
 
 eventRouter.post("/", auth, async (req, res) => {
     try {
-        const { title, description, date} = req.body
+        const { title, description, date } = req.body
         const event = new eventModel({
             title,
             description,

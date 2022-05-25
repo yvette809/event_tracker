@@ -8,6 +8,8 @@ import { logOut } from '../actions/userActions'
 const Navigation = ({ setShowModal }) => {
 
   const { userInfo } = useSelector(state => state.userLogin)
+  const { name, email, image } = userInfo
+  console.log('userInfo=>', userInfo)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -44,19 +46,15 @@ const Navigation = ({ setShowModal }) => {
 
           <div className="d-flex align-items-center">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-              {/* <Link to="/login">
-                <li className="nav-link">
-                  Login
-                </li>
-              </Link> */}
-              {/* <Link to="/register">
-                <li className="nav-link">
-                  Register
-                </li>
-              </Link> */}
+
               <li className="nav-link add-event" onClick={() => setShowModal(true)}>
                 Add New Event
               </li>
+              <Link to="/pass-events">
+                <li className="nav-link" >
+                  Pass Events
+                </li>
+              </Link>
             </ul>
 
 
@@ -69,7 +67,12 @@ const Navigation = ({ setShowModal }) => {
                 data-mdb-toggle="dropdown"
                 aria-expanded="false"
               >
-                {userInfo.image ? <img src={userInfo.image} /> : <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" />}
+                {image ? <img src={image} className="circle"
+                  alt="user image"
+                /> : <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" className="rounded-circle"
+                  height="25"
+                  alt="Black and White Portrait of a Man"
+                  loading="lazy" />}
                 {/* <img
                   src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                   className="rounded-circle"
@@ -86,10 +89,10 @@ const Navigation = ({ setShowModal }) => {
                   aria-labelledby="navbarDropdownMenuAvatar"
                 >
                   <li>
-                    <Link className="dropdown-item" to="/">{userInfo.name}</Link>
+                    <Link className="dropdown-item" to="/">{name && name}</Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/">{userInfo.email}</Link>
+                    <Link className="dropdown-item" to="/">{email && email}</Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/" onClick={logUserOut}>Logout</Link>
@@ -97,15 +100,15 @@ const Navigation = ({ setShowModal }) => {
                 </ul>
               ) : (
                 <ul
-                className="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuAvatar"
-              >
-                 <Link to="/login">
-                <li className="nav-link">
-                  Login
-                </li>
-                </Link>
-              </ul>
+                  className="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="navbarDropdownMenuAvatar"
+                >
+                  <Link to="/login">
+                    <li className="nav-link">
+                      Login
+                    </li>
+                  </Link>
+                </ul>
 
               )}
 

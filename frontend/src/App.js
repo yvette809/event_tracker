@@ -7,6 +7,7 @@ import Navigation from './components/Navigation'
 import Registration from './components/Registration'
 import Login from './components/Login'
 import AddEvent from './components/AddEvent'
+import PassEvents from './pages/PassEvents'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/events/:id' element={<EventDetails />} />
           <Route path='/register' element={<Registration />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/pass-events' element={<PassEvents/>}/>
           {/* <Route path='/add-event' element={<AddEvent />} /> */}
         </Routes>
 
