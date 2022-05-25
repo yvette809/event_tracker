@@ -16,7 +16,7 @@ const PassEvents = () => {
     return (
         <>
             <div className='my-4 text-center'><h2>Pass Events</h2></div>
-            {sortedEvents.map(event => {
+            {sortedEvents.length >0 ?sortedEvents.map(event => {
                 let today = new Date().toISOString()
 
                 console.log('today', today)
@@ -24,7 +24,7 @@ const PassEvents = () => {
                 if (event.date < today) {
                     return <SingleEvent event={event} key={event._id} />
                 }
-            })}
+            }): <div className='text-center evt'><h3>Events not found..</h3></div>}
         </>
     )
 }

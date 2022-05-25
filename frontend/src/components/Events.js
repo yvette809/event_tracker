@@ -28,23 +28,15 @@ const Events = () => {
         <>
             <h2 className='my-4 text-center'>My Events</h2>
 
-            {/* {sortedEvents.length > 0 && sortedEvents ? sortedEvents.map(event => {
-                return (
-                    <SingleEvent event={event} key={event._id} />
-                )
-            })
-                : (
-                    <h1>Events not found..</h1>)} */}
-
-            {sortedEvents.map(event => {
+            {sortedEvents.length > 0 ? sortedEvents.map(event => {
                 let today = new Date().toISOString()
 
                 console.log('today', today)
                 console.log('event-date', event.date)
                 if (event.date >= today) {
                     return <SingleEvent event={event} key={event._id} />
-                } 
-            })}
+                }
+            }) : <div className='text-center evt'><h3>Events not found..</h3></div>}
         </>
     )
 }
