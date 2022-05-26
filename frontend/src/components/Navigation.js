@@ -22,7 +22,7 @@ const Navigation = ({ setShowModal }) => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light ">
 
         <div className="container-fluid">
 
@@ -39,7 +39,7 @@ const Navigation = ({ setShowModal }) => {
           </button>
 
           <div className="collapse navbar-collapse d-flex align-items-center" id="navbarSupportedContent">
-            <Link to="/"><h2>EventTracker</h2></Link>
+            <Link to="/" className='text-white'><h2><span className="text-info">E-</span>Tra<span className="text-info">c</span>ker</h2></Link>
           </div>
 
 
@@ -58,7 +58,7 @@ const Navigation = ({ setShowModal }) => {
             </ul>
 
 
-            <div className="dropdown">
+            {/* <div className="dropdown">
               <a
                 className="dropdown-toggle d-flex align-items-center hidden-arrow"
                 href="!#"
@@ -73,16 +73,27 @@ const Navigation = ({ setShowModal }) => {
                   height="25"
                   alt="Black and White Portrait of a Man"
                   loading="lazy" />}
-                {/* <img
-                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                  className="rounded-circle"
-                  height="25"
-                  alt="Black and White Portrait of a Man"
-                  loading="lazy"
-                /> */}
-              </a>
 
-              {userInfo ? (
+              </a> */}
+
+            {userInfo ? (
+              <div className="dropdown">
+                <a
+                  className="dropdown-toggle d-flex align-items-center hidden-arrow"
+                  href="!#"
+                  id="navbarDropdownMenuAvatar"
+                  role="button"
+                  data-mdb-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {image ? <img src={image} className="circle"
+                    alt="user image"
+                  /> : <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" className="rounded-circle"
+                    height="25"
+                    alt="Black and White Portrait of a Man"
+                    loading="lazy" />}
+
+                </a>
 
                 <ul
                   className="dropdown-menu dropdown-menu-end"
@@ -92,13 +103,13 @@ const Navigation = ({ setShowModal }) => {
                     <Link className="dropdown-item" to="/">{name && name}</Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/">{email && email}</Link>
+                    <Link className="dropdown-item " to="/">{email && email}</Link><hr />
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/" onClick={logUserOut}>Logout</Link>
                   </li>
                 </ul>
-              ) : (
+                ) : (
                 <ul
                   className="dropdown-menu dropdown-menu-end"
                   aria-labelledby="navbarDropdownMenuAvatar"
@@ -112,7 +123,7 @@ const Navigation = ({ setShowModal }) => {
 
               )}
 
-            </div>
+              </div>
           </div>
 
         </div>

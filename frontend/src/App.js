@@ -11,23 +11,22 @@ import PassEvents from './pages/PassEvents'
 
 
 function App() {
-  const[showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   return (
     <div>
-      {showModal && <AddEvent setShowModal={setShowModal}/> }
-      <Navigation setShowModal={setShowModal}/>
+      <Navigation setShowModal={setShowModal} />
       <div className="container">
 
         <Routes >
-          <Route path='/' element={<Events />} />
+          <Route path='/' element={<Events setShowModal={setShowModal} />} />
           <Route path='/events/:id' element={<EventDetails />} />
           <Route path='/register' element={<Registration />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/pass-events' element={<PassEvents/>}/>
+          <Route path='/pass-events' element={<PassEvents />} />
           {/* <Route path='/add-event' element={<AddEvent />} /> */}
         </Routes>
-
       </div>
+      {showModal && <AddEvent setShowModal={setShowModal} />}
     </div>
 
   )

@@ -4,13 +4,28 @@
   margin: 0;
 }
 
+nav {
+  position: relative;
+  background-color: rgb(87, 52, 115);
+}
+
+li.nav-link {
+  color: #fff !important;
+}
+
 .events {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  text-align: center;
   box-shadow: 5px 5px 10px #4444447d;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
   padding: 1rem;
+  font-size: 1.2rem;
+  width: 70%;
+  margin: 0 auto;
+  color: rgb(29, 28, 28);
 }
 
 img.circle {
@@ -44,4 +59,33 @@ img.circle {
   padding: 0.5rem;
   color: white;
   border-radius: 50px;
+}
+
+.modal-side {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  width: 500px;
+}
+
+.m-body {
+  background-color: rgb(174, 161, 184);
+}
+.modal-title {
+  text-align: center;
+  margin: 0 auto;
+}
+.btn-modal {
+  background-color: rgb(87, 52, 115);
+  font-size: 1rem;
+  transition: all 0.1s ease-in;
+}
+
+.btn-modal:hover {
+  background-color: rgb(174, 161, 184);
+}
+
+.form-control:focus {
+  outline: none;
+  border: none;
 }
