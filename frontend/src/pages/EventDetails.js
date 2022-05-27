@@ -21,18 +21,18 @@ const EventDetails = () => {
     return (
 
         <div className='container mt-5 '>
-            <div className='event-container'>
-                <p>Title: {event.title}</p>
+            <div className='event-container '>
+                <p>Title: {event.title}</p><hr />
                 <div>
-                    <p> Date: <Moment format="DD/MM/yyyy">{event.date}</Moment></p>
-                    <p> Time: <Moment fromNow>{event.date}</Moment></p>
+                    <p> Date: <Moment format="DD/MM/yyyy">{event.date}</Moment></p><hr />
+                    <p> Time: <Moment fromNow>{event.date}</Moment></p><hr />
                 </div>
                 <p>Description: {event.description}</p>
 
 
             </div>
-            <div className='d-flex justify-content-end mt-3 text-white'>
-                Created By : {event.user && event.user.name}
+            <div className='d-flex justify-content-end mt-3 text-muted'>
+                <p>Created By : {event.user && event.user.name}</p>
             </div>
         </div>
     )

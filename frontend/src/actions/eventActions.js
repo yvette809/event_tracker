@@ -88,6 +88,8 @@ export const addEvent = (formData) => async (dispatch, getState) => {
             payload: data
         })
 
+        localStorage.setItem('event', JSON.stringify(data))
+
     } catch (error) {
         console.log(error)
         dispatch({

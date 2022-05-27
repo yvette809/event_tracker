@@ -77,7 +77,8 @@ eventRouter.post("/", auth, async (req, res) => {
         await event.save()
         console.log(event)
 
-        res.status(201).send('event created')
+        //res.status(201).send('event created')
+        res.status(201).send(event)
 
     } catch (error) {
         console.log(error)

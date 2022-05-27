@@ -66,7 +66,7 @@ const AddEvent = ({ setShowModal }) => {
                 </Modal.Header>
 
                 <Modal.Body className='m-body'>
-                    {/* {!message && <Message variant="primary">Fields Cannot be empty</Message>} */}
+                 
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label className="form-label fw-bolder" htmlFor="title">Title</label>
