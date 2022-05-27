@@ -8,10 +8,10 @@ const SingleEvent = ({ event }) => {
     return (
 
         <Link to={`/events/${event._id}`}>
-            <div className='events'>
+            <div className='events mb-2'>
                 <p>{event.title}</p>
                 <p>  <Moment fromNow>{event.date}</Moment></p>
-                 
+
             </div>
         </Link>
 

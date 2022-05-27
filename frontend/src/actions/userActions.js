@@ -91,4 +91,16 @@ export const register = (formData) => async (dispatch) => {
 
 }
 
+export const checkUser = () => {
+    return dispatch => {
+        let userInfo = localStorage.getItem('userInfo')
+        if (userInfo) {
+            dispatch({
+                type: USER_LOGIN_SUCCESS,
+                payload: JSON.parse(userInfo)
+            })
+        }
+    }
+}
+
 

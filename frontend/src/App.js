@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Routes, Route } from 'react-router-dom'
 import Events from './components/Events'
 import './index.css'
@@ -8,9 +9,17 @@ import Registration from './components/Registration'
 import Login from './components/Login'
 import AddEvent from './components/AddEvent'
 import PassEvents from './pages/PassEvents'
+import { checkUser } from './actions/userActions';
 
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(checkUser())
+  }, [dispatch])
+
   const [showModal, setShowModal] = useState(false)
   return (
     <div>

@@ -58,42 +58,27 @@ const Navigation = ({ setShowModal }) => {
             </ul>
 
 
-            {/* <div className="dropdown">
-              <a
+            <div className="dropdown">
+              <Link
                 className="dropdown-toggle d-flex align-items-center hidden-arrow"
-                href="!#"
+                to="/"
                 id="navbarDropdownMenuAvatar"
                 role="button"
                 data-mdb-toggle="dropdown"
                 aria-expanded="false"
               >
-                {image ? <img src={image} className="circle"
+                {image ? <img src={image} className="rounded-circle"
                   alt="user image"
+                  height="25"
+                  loading="lazy"
                 /> : <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" className="rounded-circle"
                   height="25"
                   alt="Black and White Portrait of a Man"
                   loading="lazy" />}
 
-              </a> */}
+              </Link>
 
-            {userInfo ? (
-              <div className="dropdown">
-                <a
-                  className="dropdown-toggle d-flex align-items-center hidden-arrow"
-                  href="!#"
-                  id="navbarDropdownMenuAvatar"
-                  role="button"
-                  data-mdb-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {image ? <img src={image} className="circle"
-                    alt="user image"
-                  /> : <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" className="rounded-circle"
-                    height="25"
-                    alt="Black and White Portrait of a Man"
-                    loading="lazy" />}
-
-                </a>
+              {userInfo ? (
 
                 <ul
                   className="dropdown-menu dropdown-menu-end"
@@ -109,7 +94,7 @@ const Navigation = ({ setShowModal }) => {
                     <Link className="dropdown-item" to="/" onClick={logUserOut}>Logout</Link>
                   </li>
                 </ul>
-                ) : (
+              ) : (
                 <ul
                   className="dropdown-menu dropdown-menu-end"
                   aria-labelledby="navbarDropdownMenuAvatar"
@@ -123,7 +108,7 @@ const Navigation = ({ setShowModal }) => {
 
               )}
 
-              </div>
+            </div>
           </div>
 
         </div>

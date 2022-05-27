@@ -9,9 +9,13 @@ const PassEvents = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { events, loading } = useSelector(state => state.eventList)
-   
+
 
     const sortedEvents = events.sort((a, b) => new Date(a.date) - new Date(b.date))
+
+    useEffect(() => {
+        dispatch(getEvents())
+    }, [dispatch])
 
     return (
         <>

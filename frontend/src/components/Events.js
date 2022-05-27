@@ -18,9 +18,6 @@ const Events = () => {
         dispatch(getEvents())
     }, [dispatch])
 
-    if (loading) {
-        return <Loader />
-    }
 
     return (
 

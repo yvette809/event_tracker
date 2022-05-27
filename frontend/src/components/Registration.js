@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 //import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { register } from '../actions/userActions'
-
-import Message from '../components/Message'
+import Loader from '../components/Loader'
 import { useEffect } from 'react';
 
 
@@ -22,39 +21,7 @@ const Registration = () => {
     image: ""
   })
 
-  const [message, setMessage] = useState(null)
 
-  useEffect(() => {
-    if (user) {
-      navigate("/")
-    }
-  })
-  // const [error, setError] = useState(null)
-  // const [token, setToken] = useState({})
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   try {
-
-  //     if (formData.name.trim() === "" && formData.email.trim() === "" && formData.password.trim() === "") {
-  //       setError('Fields cannot be empty')
-  //     }
-
-  //     const res = await axios.post('http://localhost:4010/users/register', formData)
-  //     setFormData(res.data)
-  //     console.log('user', res.data)
-  //     setToken(res.data.token)
-  //     localStorage.setItem('token', res.data.token)
-  //     // alert('user registered')
-  //     //navigate("/")
-  //     console.log(token)
-
-  //   } catch (error) {
-  //     console.log(error)
-  //     setError(error)
-  //   }
-
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -68,10 +35,10 @@ const Registration = () => {
 
   return (
     <>
-      <h1 className='text-center'>Registration</h1>
-      {message && <Message variant="danger">{message}</Message>}
-      <form className='mt-4' onSubmit={handleSubmit}>
-
+      <h1 className='text-center mt-3'>Registration</h1>
+      {loading && Loader}
+      {/* {error && <p className='error'>{error}</p>} */}
+      <form className='mt-2 reg-form' onSubmit={handleSubmit}>
         <div className="">
           <label className="form-label" htmlFor="name">Name</label>
           <input type="name" id="name" className="form-control" name="name" value={formData.name} onChange={onChange} />
@@ -100,6 +67,11 @@ const Registration = () => {
 
         {/* Submit button */}
         <button type="submit" class="btn btn-primary btn-block mb-4" onClick={handleSubmit}>Sign up</button>
+
+        <div className="text-center">
+          <p className='text-white'>Already have an account? <Link to="/login" className='login'>Login </Link></p>
+
+        </div>
 
       </form>
 

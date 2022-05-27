@@ -8,27 +8,30 @@ import axios from 'axios'
 const EventDetails = () => {
 
     const dispatch = useDispatch()
-    const {event} = useSelector(state=>state.eventDetails)
-    const {id} = useParams()
+    const { event } = useSelector(state => state.eventDetails)
+    const { id } = useParams()
 
 
     useEffect(() => {
-       dispatch(getEventById(id))
+        dispatch(getEventById(id))
     }, [dispatch, id])
 
-  
+
 
     return (
 
-        <div className='container'>
-            <p className='my-3'>You can now see details of your events {event.user && event.user.name} !</p>
-            <div className='event_details'>
-                <p>{event.title}</p>
-                <p>{event.description}</p>
-                <p> <Moment format="DD/MM/yyyy">{event.date}</Moment></p>
-                <p>  <Moment fromNow>{event.date}</Moment></p>
+        <div className='container mt-5 '>
+            <div className='event-container'>
+                <p>Title: {event.title}</p>
+                <div>
+                    <p> Date: <Moment format="DD/MM/yyyy">{event.date}</Moment></p>
+                    <p> Time: <Moment fromNow>{event.date}</Moment></p>
+                </div>
+                <p>Description: {event.description}</p>
+
+
             </div>
-            <div className='d-flex justify-content-end mt-3'>
+            <div className='d-flex justify-content-end mt-3 text-white'>
                 Created By : {event.user && event.user.name}
             </div>
         </div>
