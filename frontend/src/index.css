@@ -116,7 +116,19 @@ li.nav-link {
     width: 100%;
     font-size: 1rem;
   }
+
+  .event-container {
+    width: 100%;
+  }
   .modal-side {
     width: 300px;
+  }
+
+  .items-dropdown {
+    transform: translateX(20%);
+  }
+  .rounded-circle {
+    margin-left: 12rem;
+    transform: translateY(-20px);
   }
 }
