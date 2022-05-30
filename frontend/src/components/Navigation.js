@@ -1,4 +1,5 @@
 
+
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -8,6 +9,7 @@ import { logOut } from '../actions/userActions'
 const Navigation = ({ setShowModal }) => {
 
   const { userInfo } = useSelector(state => state.userLogin)
+
   const { name, email, image } = userInfo
   console.log('userInfo=>', userInfo)
   const dispatch = useDispatch()
@@ -78,7 +80,7 @@ const Navigation = ({ setShowModal }) => {
 
               </Link>
 
-              {userInfo ? (
+              {userInfo.token ? (
 
                 <ul
                   className="dropdown-menu dropdown-menu-end"
@@ -91,7 +93,7 @@ const Navigation = ({ setShowModal }) => {
                     <Link className="dropdown-item " to="/">{email && email}</Link><hr />
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/" onClick={logUserOut}>Logout</Link>
+                    <Link className="dropdown-item" to="/login" onClick={logUserOut}>Logout</Link>
                   </li>
                 </ul>
               ) : (
@@ -99,11 +101,10 @@ const Navigation = ({ setShowModal }) => {
                   className="dropdown-menu dropdown-menu-end"
                   aria-labelledby="navbarDropdownMenuAvatar"
                 >
-                  <Link to="/login">
-                    <li className="nav-link">
-                      Login
-                    </li>
-                  </Link>
+                  <li>
+                    <Link className="dropdown-item " to="/login">Login</Link>
+                  </li>
+
                 </ul>
 
               )}
