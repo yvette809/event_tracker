@@ -21,7 +21,7 @@ const PassEvents = () => {
         <>
             <div className='my-4 text-center'><h2>Pass Events</h2></div>
             {loading && <Loader />}
-            {sortedEvents.length > 0 ? sortedEvents.map(event => {
+            {sortedEvents.length > 0 ? sortedEvents.slice(0, 5).map(event => {
                 let today = new Date().toISOString()
                 if (event.date < today) {
                     return <SingleEvent event={event} key={event._id} />
